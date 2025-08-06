@@ -11,25 +11,21 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">front_auditoria</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow border-bottom border-3 border-primary">
+            <div class="container-fluid d-flex justify-content-between align-items-center py-3 px-4">
+                <!-- Banner a la izquierda -->
+                <div class="d-flex align-items-center">
+                    <img src="images/banner-ug.png" alt="Banner UG" style="height: 50px; object-fit: contain;" />
+                </div>
+
+                <!-- Botones a la derecha -->
+                <div class="d-flex gap-2 align-items-center">
+                    <a asp-page="/Encuesta" class="btn btn-primary rounded fw-medium px-3 py-2 text-white text-decoration-none" role="button">Auditoria</a>
+                    <a asp-page="/CreadorPreguntas" class="btn btn-primary rounded fw-medium px-3 py-2 text-white text-decoration-none" role="button">Creador de Preguntas</a>
                 </div>
             </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">

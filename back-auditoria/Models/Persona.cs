@@ -20,6 +20,8 @@ public partial class Persona
 
     public int IdRol { get; set; }
 
+
+    
     [InverseProperty("IdPersonaNavigation")]
     public virtual ICollection<Encuestum> Encuesta { get; set; } = new List<Encuestum>();
 

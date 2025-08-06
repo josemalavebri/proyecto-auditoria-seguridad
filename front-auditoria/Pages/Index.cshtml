@@ -3,8 +3,44 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<div class="mt-5 container d-flex justify-content-center align-items-center ">
+    <div class="card shadow-lg" style="width: 800px;">
+        <div class="card-body">
+            <h5 class="card-title text-center mb-4">Buscar Encuesta</h5>
+            <form id="formBusqueda" onsubmit="return false;">
+                <div class="mb-3 position-relative">
+                    <label for="lugares" class="form-label">Lugares</label>
+                    <input type="text" class="form-control" id="lugares" name="lugares" placeholder="Ingresa lugares" autocomplete="off">
+                    <div id="sugerencias" class="list-group position-absolute w-100 z-3"></div>
+                </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+                <div class="row">
+                    <div class="col-6">
+                        <label for="facultad" class="form-label">Facultad</label>
+                        <input type="text" class="form-control" id="facultad" name="facultad" placeholder="Ingresa facultad">
+                    </div>
+                    <div class="col-6">
+                        <label for="departamento" class="form-label">Departamento</label>
+                        <input type="text" class="form-control" id="departamento" name="departamento" placeholder="Ingresa departamento">
+                    </div>
+                </div>
+
+                <div class="text-center my-4">
+                    <button type="button" class="btn btn-primary btn-lg" onclick="buscarAuditorias()">
+                        Mostrar Auditoría
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
+<h3>Encuestas Filtradas</h3>
+<div id="contenedor-auditorias" class="container mt-4 p-4 border rounded shadow-sm bg-light"></div>
+
+<h3>Detalles de la encuesta</h3>
+<div id="contenedor-detalle" class="container mt-4 p-4 border rounded shadow-sm bg-light">
+    <!-- Aquí se mostrará el detalle de la encuesta -->
+</div>
+

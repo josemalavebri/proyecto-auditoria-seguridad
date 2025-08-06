@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "front-auditoria", "front-au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "back-auditoria", "back-auditoria\back-auditoria.csproj", "{D445FCC3-CCBC-4EAE-8520-0BA6716FBECB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOs", "DTOs\DTOs.csproj", "{50415387-CAB2-45A0-8F85-64EFBEE2957C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D445FCC3-CCBC-4EAE-8520-0BA6716FBECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D445FCC3-CCBC-4EAE-8520-0BA6716FBECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D445FCC3-CCBC-4EAE-8520-0BA6716FBECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50415387-CAB2-45A0-8F85-64EFBEE2957C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50415387-CAB2-45A0-8F85-64EFBEE2957C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50415387-CAB2-45A0-8F85-64EFBEE2957C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50415387-CAB2-45A0-8F85-64EFBEE2957C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
