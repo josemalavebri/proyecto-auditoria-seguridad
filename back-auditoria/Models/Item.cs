@@ -1,29 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
-namespace auditoriaBackend.Models;
+namespace back_auditoria.Models;
 
-[Table("Item")]
 public partial class Item
 {
-    [Key]
     public int IdItem { get; set; }
 
-    [StringLength(200)]
     public string Descripcion { get; set; } = null!;
 
     public int IdPregunta { get; set; }
 
-    [ForeignKey("IdPregunta")]
-    [InverseProperty("Items")]
-    public virtual Preguntum IdPreguntaNavigation { get; set; } = null!;
+    public virtual Pregunta IdPreguntaNavigation { get; set; } = null!;
 
-    [InverseProperty("IdItemNavigation")]
-    public virtual ICollection<PreguntaItem> PreguntaItems { get; set; } = new List<PreguntaItem>();
+    public virtual ICollection<PreguntaItem> PreguntaItem { get; set; } = new List<PreguntaItem>();
 
-    [InverseProperty("IdItemNavigation")]
-    public virtual ICollection<RespuestaItem> RespuestaItems { get; set; } = new List<RespuestaItem>();
+    public virtual ICollection<RespuestaItem> RespuestaItem { get; set; } = new List<RespuestaItem>();
 }

@@ -1,10 +1,11 @@
-using auditoriaBackend.Models;
+using back_auditoria.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Agrega servicios al contenedor
 builder.Services.AddControllers();
+
 builder.Services.AddDbContext<EncuestaDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("EncuestaDbContext")));
 

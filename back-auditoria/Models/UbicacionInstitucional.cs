@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
-using System.Text.Json.Serialization;
 
-namespace auditoriaBackend.Models;
+namespace back_auditoria.Models;
 
-[Table("UbicacionInstitucional")]
 public partial class UbicacionInstitucional
 {
-    [Key]
     public int IdUbicacionInstitucional { get; set; }
 
     public int IdUbicacion { get; set; }
@@ -19,20 +13,11 @@ public partial class UbicacionInstitucional
 
     public int IdDepartamento { get; set; }
 
-    [InverseProperty("IdUbicacionInstitucionalNavigation")]
-    public virtual ICollection<Auditorium> Auditoria { get; set; } = new List<Auditorium>();
+    public virtual ICollection<Auditoria> Auditoria { get; set; } = new List<Auditoria>();
 
-    [ForeignKey("IdDepartamento")]
-    [InverseProperty("UbicacionInstitucionals")]
     public virtual Departamento IdDepartamentoNavigation { get; set; } = null!;
-
-    [ForeignKey("IdFacultad")]
-    [InverseProperty("UbicacionInstitucionals")]
-    [JsonIgnore]
 
     public virtual Facultad IdFacultadNavigation { get; set; } = null!;
 
-    [ForeignKey("IdUbicacion")]
-    [InverseProperty("UbicacionInstitucionals")]
     public virtual Ubicacion IdUbicacionNavigation { get; set; } = null!;
 }

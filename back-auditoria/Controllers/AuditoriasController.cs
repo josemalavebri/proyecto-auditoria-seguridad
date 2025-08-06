@@ -1,4 +1,4 @@
-﻿using auditoriaBackend.Models;
+﻿using back_auditoria.Data;
 using DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,18 +20,16 @@ namespace back_auditoria.Controllers
         [HttpGet]
         public async Task<ActionResult<List<AuditoriaEncuestaDto>>> Get()
         {
-            var query = from encuesta in _context.Encuesta
-                         join auditoria in _context.Auditoria
-                             on encuesta.IdAuditoria equals auditoria.IdAuditoria
-                         join persona in _context.Personas
-                             on encuesta.IdPersona equals persona.IdPersona
-                         select new AuditoriaEncuestaDto
-                         {
-                             IdAuditoria = auditoria.IdAuditoria,
-                             TituloAuditoria = auditoria.Titulo,
-                             NombrePersona = persona.Nombre,
-                             FechaRealizacion = encuesta.FechaRealizacion
-                         };
+            var query = _context.Encuesta
+        .Include(e => e.IdAuditoriaNavigation)
+        .Include(e => e.IdPersonaNavigation)
+        .Select(e => new AuditoriaEncuestaDto
+        {
+            IdAuditoria = e.IdAuditoria,
+            TituloAuditoria = e.IdAuditoriaNavigation.Titulo,
+            NombrePersona = e.IdPersonaNavigation.Nombre,
+            FechaRealizacion = e.FechaRealizacion
+        });
 
             var resultado = await query.ToListAsync();
 
