@@ -16,14 +16,18 @@
 
 
                 <div class="row">
-                    <div class="col-6">
+                    <div class="mb-3 position-relative">
                         <label for="facultad" class="form-label">Facultad</label>
-                        <input type="text" class="form-control" id="facultad" name="facultad" placeholder="Ingresa facultad">
+                        <input type="text" class="form-control" id="facultad" name="facultad" placeholder="Ingresa facultad" autocomplete="off">
+                        <div id="sugerencias-facultad" class="list-group position-absolute w-100 z-3"></div>
                     </div>
-                    <div class="col-6">
+
+                    <div class="mb-3 position-relative">
                         <label for="departamento" class="form-label">Departamento</label>
-                        <input type="text" class="form-control" id="departamento" name="departamento" placeholder="Ingresa departamento">
+                        <input type="text" class="form-control" id="departamento" name="departamento" placeholder="Ingresa departamento" autocomplete="off">
+                        <div id="sugerencias-departamento" class="list-group position-absolute w-100 z-3"></div>
                     </div>
+
                 </div>
 
                 <div class="text-center my-4">

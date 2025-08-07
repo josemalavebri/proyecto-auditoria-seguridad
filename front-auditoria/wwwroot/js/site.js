@@ -92,7 +92,7 @@ async function detallarEncuesta(id) {
     const res = await fetch(url);
     const detalle = await res.json();
 
-    document.getElementById('contenedor-detalle').innerHTML = generarTabla(detalle);
+    document.getElementById('contenedor-detalle').innerHTML = generarTablaDetalle(detalle);
 }
 
 
@@ -115,10 +115,62 @@ function generarTablaConDetalle(datos) {
         }
 
         // Suponiendo que la clave primaria del objeto es "id"
-        html += `<td><button class="btn btn-sm btn-info" onclick="detallarEncuesta(${fila.id})">Detallar</button></td>`;
+        html += `<td><button class="btn btn-sm btn-info" onclick="detallarEncuesta(${fila.idAuditoria})">Detallar</button></td>`;
         html += "</tr>";
     }
 
     html += "</tbody></table>";
     return html;
+}
+
+//5:05
+// Autocompletar para facultad y departamento
+    async function autocompletar(inputId, sugerenciasId, handler) {
+        const input = document.getElementById(inputId);
+    const sugerenciasDiv = document.getElementById(sugerenciasId);
+
+    input.addEventListener('input', async function () {
+            const valor = this.value.trim();
+
+    if (valor === '') {
+        sugerenciasDiv.innerHTML = '';
+    return;
+            }
+
+    try {
+                const res = await fetch(`/Index?handler=${handler}&termino=${encodeURIComponent(valor)}`);
+    const datos = await res.json();
+
+    sugerenciasDiv.innerHTML = '';
+                datos.forEach(item => {
+                    const opcion = document.createElement('button');
+    opcion.classList.add('list-group-item', 'list-group-item-action');
+    opcion.textContent = item;
+                    opcion.addEventListener('click', () => {
+        input.value = item;
+    sugerenciasDiv.innerHTML = '';
+                    });
+    sugerenciasDiv.appendChild(opcion);
+                });
+            } catch (error) {
+        console.error(`Error al buscar sugerencias de ${handler}`, error);
+            }
+        });
+    }
+
+    autocompletar('facultad', 'sugerencias-facultad', 'SugerenciasFacultad');
+    autocompletar('departamento', 'sugerencias-departamento', 'SugerenciasDepartamento');
+
+
+function generarTablaDetalle(detalle) {
+    if (!detalle) return '<p>No hay datos disponibles.</p>';
+
+    return `
+        <table class="table table-bordered table-striped">
+            <tr><th>Id Respuesta</th><td>${detalle.idRespuesta}</td></tr>
+            <tr><th>Pregunta</th><td>${detalle.pregunta}</td></tr>
+            <tr><th>Items Asociados</th><td>${detalle.itemsAsociados}</td></tr>
+            <tr><th>Marcado</th><td>${detalle.marcado ? 'Sí' : 'No'}</td></tr>
+        </table>
+    `;
 }

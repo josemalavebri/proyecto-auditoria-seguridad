@@ -1,0 +1,112 @@
+﻿@page
+@model front_auditoria.Pages.CreadorPreguntasModel
+@{
+}
+
+<div class="container-fluid">
+
+    <form id="form-pregunta-completa" class="p-4 border rounded shadow-sm bg-light">
+
+        <h4 class="mb-4">Crear Pregunta y Asignarla a una Sección</h4>
+
+        <!-- Crear nueva sección o seleccionar una existente -->
+        <div class="mb-4">
+            <div class="form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" id="toggleNuevaSeccion" onchange="alternarSeccion(this.checked)">
+                <label class="form-check-label" for="toggleNuevaSeccion">Crear nueva sección</label>
+            </div>
+
+            <!-- Selección de sección existente -->
+            <div id="seccion-existente" class="mb-3">
+                <label for="seccion" class="form-label">Sección existente</label>
+                <select id="seccion" name="seccion" class="form-select">
+                    <option value="">Seleccione una sección</option>
+                    <option value="1">Seguridad Informática</option>
+                    <option value="2">Redes y Comunicaciones</option>
+                </select>
+            </div>
+
+            <!-- Crear nueva sección -->
+            <div id="nueva-seccion" class="d-none">
+                <div class="mb-3">
+                    <label for="nombreSeccion" class="form-label">Nombre de la nueva sección</label>
+                    <input type="text" id="nombreSeccion" name="nombreSeccion" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="descripcionSeccion" class="form-label">Descripción</label>
+                    <textarea id="descripcionSeccion" name="descripcionSeccion" class="form-control" rows="2"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Campos de contexto -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <label for="departamento" class="form-label">Departamento</label>
+                <select id="departamento" name="departamento" class="form-select" required>
+                    <option value="">Seleccione</option>
+                    <option value="1">Tecnologías</option>
+                    <option value="2">Administración</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="facultad" class="form-label">Facultad</label>
+                <select id="facultad" name="facultad" class="form-select" required>
+                    <option value="">Seleccione</option>
+                    <option value="1">Facultad de Ingeniería</option>
+                    <option value="2">Facultad de Ciencias Económicas</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="ubicacion" class="form-label">Ubicación</label>
+                <select id="ubicacion" name="ubicacion" class="form-select" required>
+                    <option value="">Seleccione</option>
+                    <option value="1">Edificio A</option>
+                    <option value="2">Edificio B</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Pregunta -->
+        <div class="mb-3">
+            <label for="pregunta" class="form-label">Texto de la Pregunta</label>
+            <input type="text" id="pregunta" name="pregunta" class="form-control" required>
+        </div>
+
+        <!-- Ítems asociados -->
+        <div class="mb-3">
+            <label for="items" class="form-label">Ítems Asociados</label>
+            <select id="items" name="items" class="form-select" multiple required>
+                <option value="1">Cifrado AES</option>
+                <option value="2">Hashing SHA-256</option>
+                <option value="3">Firewall Lógico</option>
+                <option value="4">Segregación de red</option>
+                <option value="5">Hardening de sistemas</option>
+            </select>
+            <div class="form-text">Mantenga presionado Ctrl (Windows) o Cmd (Mac) para seleccionar múltiples ítems.</div>
+        </div>
+
+        <!-- Botón -->
+        <button type="submit" class="btn btn-success mt-3">Guardar Pregunta</button>
+    </form>
+
+
+    <script>
+        function alternarSeccion(crearNueva) {
+            const divNueva = document.getElementById('nueva-seccion');
+            const divExistente = document.getElementById('seccion-existente');
+
+            if (crearNueva) {
+                divNueva.classList.remove('d-none');
+                divExistente.classList.add('d-none');
+            } else {
+                divNueva.classList.add('d-none');
+                divExistente.classList.remove('d-none');
+            }
+        }
+    </script>
+
+</div>
