@@ -1,0 +1,58 @@
+﻿@page
+@model front_auditoria.Pages.EncuestaModel
+@{
+    ViewData["Title"] = "Encuesta";
+}
+<h3>Direcciones Registradas</h3>
+@if (Model.Direcciones != null && Model.Direcciones.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Dirección</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var direccion in Model.Direcciones)
+            {
+                <tr>
+                    <td>@direccion.idDireccion</td>
+                    <td>@direccion.nombre</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay direcciones registradas.</p>
+}
+
+<h3>Facultades Registradas</h3>
+@if (Model.Facultades != null && Model.Facultades.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Facultad</th>
+                <th>Dirección</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var facultad in Model.Facultades)
+            {
+                <tr>
+                    <td>@facultad.idFacultad</td>
+                    <td>@facultad.nombre</td>
+                    <td>@facultad.idDireccionNavigation?.nombre</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay facultades registradas.</p>
+}
