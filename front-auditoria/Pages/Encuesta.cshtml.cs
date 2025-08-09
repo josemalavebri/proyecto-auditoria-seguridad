@@ -15,7 +15,7 @@ namespace front_auditoria.Pages
             _context = context;
         }
 
-        // Para nueva dirección
+        // Para nueva direcciï¿½n
         [BindProperty]
         public string NuevaDireccionNombre { get; set; }
 
@@ -42,7 +42,7 @@ namespace front_auditoria.Pages
 
             if (string.IsNullOrWhiteSpace(NuevaDireccionNombre))
             {
-                ModelState.AddModelError("NuevaDireccionNombre", "El nombre de la dirección es requerido.");
+                ModelState.AddModelError("NuevaDireccionNombre", "El nombre de la direcciï¿½n es requerido.");
             }
 
             if (!ModelState.IsValid)
@@ -76,7 +76,7 @@ namespace front_auditoria.Pages
 
             if (!NuevaFacultadDireccionId.HasValue)
             {
-                ModelState.AddModelError("NuevaFacultadDireccionId", "Debe seleccionar una dirección.");
+                ModelState.AddModelError("NuevaFacultadDireccionId", "Debe seleccionar una direcciï¿½n.");
             }
 
             if (!ModelState.IsValid)
