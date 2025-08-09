@@ -5,15 +5,13 @@ namespace front_auditoria.Models;
 
 public partial class Item
 {
-    public int idItem { get; set; }
+    public int IdItem { get; set; }
 
-    public string titulo { get; set; } = null!;
+    public string Titulo { get; set; } = null!;
 
-    public string? codigo { get; set; }
+    public string Codigo { get; set; } = null!;
 
-    public string? descripcion { get; set; }
+    public string Descripcion { get; set; } = null!;
 
-    public virtual ICollection<ItemsPreguntas> ItemsPreguntas { get; set; } = new List<ItemsPreguntas>();
-
-    public virtual ICollection<RespuestaItem> RespuestaItem { get; set; } = new List<RespuestaItem>();
+    public virtual ICollection<PreguntasItem> PreguntasItems { get; set; } = new List<PreguntasItem>();
 }

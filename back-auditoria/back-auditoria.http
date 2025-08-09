@@ -1,6 +1,0 @@
-@back_auditoria_HostAddress = http://localhost:5111
-
-GET {{back_auditoria_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
